@@ -102,6 +102,11 @@ Rails/HasManyOrHasOneDependent:
   StyleGuide: 'https://github.com/rubocop-hq/rails-style-guide#has_many-has_one-dependent-option'
   Enabled: true
 
+Rails/HelperInstanceVariable:
+  Description: 'TODO'
+  StyleGuide: 'TODO'
+  Enabled: true
+
 Rails/HttpPositionalArguments:
   Description: 'Use keyword arguments instead of positional arguments in http method calls.'
   Enabled: true
