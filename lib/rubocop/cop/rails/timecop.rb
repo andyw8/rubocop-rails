@@ -14,7 +14,7 @@ module RuboCop
       #
       #   # good
       #   travel_to Time.now.utc
-      class HelperInstanceVariable < Cop
+      class Timecop < Cop
         MSG = 'Use the Rails built-in time helpers instead of Timecop.'.freeze
         def on_send(node)
           receiver, _method, _args = *node

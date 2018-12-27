@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Rails::HelperInstanceVariable do
+RSpec.describe RuboCop::Cop::Rails::Timecop
   subject(:cop) { described_class.new }
 
   it 'registers an offense when using Timecop' do

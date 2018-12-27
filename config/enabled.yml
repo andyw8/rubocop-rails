@@ -102,11 +102,6 @@ Rails/HasManyOrHasOneDependent:
   StyleGuide: 'https://github.com/rubocop-hq/rails-style-guide#has_many-has_one-dependent-option'
   Enabled: true
 
-Rails/HelperInstanceVariable:
-  Description: 'TODO'
-  StyleGuide: 'TODO'
-  Enabled: true
-
 Rails/HttpPositionalArguments:
   Description: 'Use keyword arguments instead of positional arguments in http method calls.'
   Enabled: true
@@ -198,6 +193,11 @@ Rails/SkipsModelValidations:
                  Use methods that skips model validations with caution.
                  See reference for more information.
   Reference: 'https://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
+  Enabled: true
+
+Rails/Timecop:
+  Description: 'TODO'
+  StyleGuide: 'TODO'
   Enabled: true
 
 Rails/TimeZone:
