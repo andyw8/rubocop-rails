@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "spoom_client"
-
 module RuboCop
   module Cop
     module Rails
@@ -30,8 +28,6 @@ module RuboCop
         def on_send(node)
           return if node.arguments.empty?
 
-          return unless receiver_is_an_application_record?(node)
-
           method_name = node.method_name
           alias_method = ALIASES[method_name]
 
@@ -45,11 +41,6 @@ module RuboCop
         end
 
         alias on_csend on_send
-
-        def receiver_is_an_application_record?(node)
-          spoom_client = SpoomClient.new(node, processed_source)
-          spoom_client.contents.match?(/class .* < ApplicationRecord$/)
-        end
       end
     end
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "spoom_client"
+require 'spoom_client'
 
 module RuboCop
   module Cop
@@ -8,9 +8,7 @@ module RuboCop
       # Checks that ActiveRecord aliases are not used. The direct method names
       # are more clear and easier to read.
       #
-      # @safety
-      #   This cop is unsafe because custom `update_attributes` method call was changed to
-      #   `update` but the method name remained same in the method definition.
+      # This is based on the existing ActiveRecordAliases cop.
       #
       # @example
       #   #bad
@@ -47,8 +45,13 @@ module RuboCop
         alias on_csend on_send
 
         def receiver_is_an_application_record?(node)
-          spoom_client = SpoomClient.new(node, processed_source)
-          spoom_client.contents.match?(/class .* < ApplicationRecord$/)
+          class_name = node.receiver.children.first.to_s.classify
+          definition_line = SpoomClient.new(node, processed_source).definition_line
+
+          # if the class does not inherit from anything, it is not an ApplicationRecord
+          return false if definition_line.match?(/class #{class_name}$/)
+
+          definition_line.match?(/class #{class_name} < ApplicationRecord/)
         end
       end
     end
